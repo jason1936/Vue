@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>v-on指令</title>
+</head>
+<body>
+    <h1>v-on指令</h1><hr>
+    <!-- 绑定事件监听 -->
+    <div id="app">
+        本场比赛得分：{{score}} <br>
+        <p><button v-on:click="add">加分</button></p>
+        <!-- @ 为 v-on 指令简写形式 -->
+        <p><button @click="del">减分</button></p><br>
+        <input type="text" @keyup.enter="onEnter" v-model="count">
+    </div>
+
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                score:0,
+                count:0,
+            },
+            methods: {
+                add:function(){
+                    this.score+=1;
+                },
+                del:function(){
+                    this.score-=1;
+                },
+                onEnter:function(){
+                    this.score=this.score+parseInt(this.count); 
+                }
+            },
+            computed: {
+                
+            },
+        })
+       
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>v-bind指令</title>
+</head>
+<body>
+    <h1>v-bind指令</h1><hr>
+    <!-- 处理HTML中的标签属性 -->
+    <div id="app">
+        <img v-bind:src="imgSrc" width="200px" ><hr>  
+        <!-- :href="url" 简写形式为 ：-->
+        <a :href="url">绑定链接</a>        
+    </div>
+
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                imgSrc:'../assets/img/logo.png',
+                url:'http://jspang.com',
+            },
+            methods: {
+                
+            },
+            computed: {
+                
+            },
+        })
+       
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>v-text & v-html指令</title>
+</head>
+<body>
+    <h1>v-text & v-html指令</h1><hr>
+    <div id="app">
+        <span>{{ msg }}</span> === <span v-text="msg"></span><br>
+        <span>{{ title }}</span><br>
+        <span v-html="title"></span>
+        <!-- v-html尽量少用，会引起xss攻击 -->
+    </div>
+
+
+    <script>
+        var app=new Vue({
+            el:'#app',
+            data:{
+                msg:"hello world",
+                title:"<h2>This is a h2 tile</h2>"
+            },
+            
+        })
+        
+    </script>
+
+</body>
+</html>

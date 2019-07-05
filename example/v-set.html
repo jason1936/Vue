@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="../assets/js/vue.js"></script>
+    <title>Vue.set全局操作</title>
+</head>
+<body>
+    <h1>Vue.set全局操作</h1><hr>
+    <p>Vue.set 的作用就是在构造器外部操作构造器内部的数据、属性或者方法</p>
+    <div id="app">
+      外部数据：{{count}}
+      <ul>
+          <li v-for="aa in arr">{{ aa }}</li>
+      </ul>
+    </div>
+    <p>
+        <button onclick="addCount01()">addCount01</button>
+        <button onclick="addCount02()">addCount02</button>
+        <button onclick="addCount03()">addCount03</button>
+        <button onclick="addArr()">addArr</button>
+    </p>
+
+    <script>
+        function add01( ) {
+            // Vue.set改变
+            Vue.set(outData,'count',4);
+        }
+
+        function add02( ) {
+            // Vue对象的方法添加
+            app.count++;
+        }
+       
+        function add03( ) {
+            // 直接操作外部数据
+            outData.count++;
+        }
+        
+        function addArr( ) {
+            app.arr[3]="ddd";
+            //由于Javascript的限制，Vue不能自动检测以下变动的数组。
+            // 当你利用索引直接设置一个项时，vue不会为我们自动更新。
+            // 当你修改数组的长度时，vue不会为我们自动更新
+            Vue.set( app.arr,3,'ddd');
+        }
+
+        //在构造器外部声明数据
+        var outData={
+            count:1,
+            name:'food',
+            arr:['aaa','bbb','ccc']
+        }
+        
+        var app=new Vue({
+            el:'#app',
+            // 引用外部数据
+            data: outData,
+        })
+        
+    </script>
+
+</body>
+</html>
